@@ -1,0 +1,12 @@
+{
+  "name": "prez_runner",
+  "version": "0.0.0",
+  "dependencies": {
+    "reveal.js": "~2.6.1"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
