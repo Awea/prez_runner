@@ -54,11 +54,11 @@ module PrezRunner
 
   class Slide
     def initialize(path)
-      @file = File.new(path)
+      @content = File.read(path)
     end
 
     def render
-      @file.read
+      ERB.new(File.read('views/_slide.html.erb')).result(binding)
     end
   end
 
