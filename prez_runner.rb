@@ -11,16 +11,77 @@ module PrezRunner
   module Controller
     class Home
       def self.render(request_path)
-        self.new(request_path).render
+        new(request_path).render
       end
 
       def initialize(request_path)
-        @content = File.read(request_path[1..request_path.length])
+        @reveal = Reveal.new(request_path[1..request_path.length])
       end      
 
       def render
         ERB.new(File.read('views/index.html.erb')).result(binding)
       end
+    end
+  end
+
+  class Reveal
+    def initialize(folder)
+      @folder = folder
+    end
+
+    def slides
+      @slides ||= get_slides
+    end
+
+    private
+
+    def get_slides
+      dir    = Dir.new(@folder)
+      slides = []
+      dir.each do |entry|
+        unless ['.','..'].include?(entry)
+          path = "#{dir.path}/#{entry}"
+          if VerticalContainer.valid?(path)
+            slides << VerticalContainer.new(path)
+          else
+            slides << Slide.new(path)
+          end
+        end
+      end
+      slides
+    end
+  end
+
+  class Slide
+    def initialize(path)
+      @file = File.new(path)
+    end
+
+    def render
+      @file.read
+    end
+  end
+
+  class VerticalContainer
+    attr_reader :slides
+
+    def self.valid?(path)
+      Dir.exist?(path)
+    end
+
+    def initialize(path)
+      @dir    = Dir.new(path)
+      @slides = []
+
+      @dir.each do |entry|
+        unless ['.','..'].include?(entry)
+          @slides << Slide.new("#{@dir.path}/#{entry}")
+        end
+      end
+    end
+
+    def render
+      ERB.new(File.read('views/_vertical_slide.html.erb')).result(binding)
     end
   end
 end

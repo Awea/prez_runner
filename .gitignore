@@ -2,3 +2,4 @@ NOTES.md
 .DS_Store
 .bundle
 prezs/*/
+!prezs/example
