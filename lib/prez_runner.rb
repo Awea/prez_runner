@@ -1,26 +1,21 @@
 module PrezRunner
-
-  module RackResponder
-    class Root
-      def call env
-        [200, {"Content-Type" => "text/html"}, [PrezRunner::Controller::Home.render(env['REQUEST_PATH'])]] 
-      end
+  class RootRackResponder
+    def call env
+      [200, {"Content-Type" => "text/html"}, [HomeController.render(env['REQUEST_PATH'])]] 
     end
   end
 
-  module Controller
-    class Home
-      def self.render(request_path)
-        new(request_path).render
-      end
+  class HomeController
+    def self.render(request_path)
+      new(request_path).render
+    end
 
-      def initialize(request_path)
-        @container = MainContainer.new(request_path[1..request_path.length])
-      end      
+    def initialize(request_path)
+      @container = MainContainer.new(request_path[1..request_path.length])
+    end      
 
-      def render
-        ERB.new(File.read('views/index.html.erb')).result(binding)
-      end
+    def render
+      ERB.new(File.read('views/index.html.erb')).result(binding)
     end
   end
 
