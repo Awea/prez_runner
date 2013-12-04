@@ -3,11 +3,11 @@
 * Duplicate `prezs/example`
 * Read the comments
 
-## Prepare the server
+## Run the server
 
 ```shell
 bundle
-bin/prez_runer -h
+bin/prez_runner
 ```
 
 ## Display your prez
