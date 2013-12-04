@@ -1,6 +1,6 @@
 require 'rack'
 require 'erb'
-require './prez_runner'
+require './lib/prez_runner'
 
 app = Rack::Builder.app do
   use Rack::Static, :urls => ["/assets"]
