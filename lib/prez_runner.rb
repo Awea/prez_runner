@@ -1,17 +1,31 @@
+require 'rack'
+require 'erb'
+
 module PrezRunner
   class RootRackResponder
+    def initialize(prez_path)
+      @prez_path = prez_path
+    end
+
     def call env
-      [200, {"Content-Type" => "text/html"}, [HomeController.render(env['REQUEST_PATH'])]] 
+      path = @prez_path ? @prez_path : path_from_env(env)
+      [200, {"Content-Type" => "text/html"}, [HomeController.render(path)]] 
+    end
+
+    private
+
+    def path_from_env(env)
+      env['REQUEST_PATH'][1..env['REQUEST_PATH'].length]
     end
   end
 
   class HomeController
-    def self.render(request_path)
-      new(request_path).render
+    def self.render(path)
+      new(path).render
     end
 
-    def initialize(request_path)
-      @container = MainContainer.new(request_path[1..request_path.length])
+    def initialize(path)
+      @container = MainContainer.new(path)
     end      
 
     def render

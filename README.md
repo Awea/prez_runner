@@ -3,12 +3,13 @@
 * Duplicate `prezs/example`
 * Read the comments
 
-## Prepare and run the server
+## Prepare the server
 
 ```shell
-rackup
+bundle
+bin/prez_runer -h
 ```
 
 ## Display your prez
 
-To display the example one just go [here](http://localhost:9292/prezs/example)
+To display the example one just go [here](http://localhost:8080/prezs/example)
