@@ -1,5 +1,6 @@
 require 'rack'
 require 'erb'
+require 'yaml'
 
 module PrezRunner
   class RootRackResponder
@@ -107,22 +108,39 @@ module PrezRunner
   end
 
   class Slide
-    def initialize(path)
-      @path = path
-    end
+    attr_reader :content, :data
 
-    def content
-      @content ||= get_content
+    def initialize(path)
+      read_yaml(path)
     end
 
     def render
-      ERB.new(File.read('views/_slide.html.erb')).result(binding)
+      ERB.new(File.read("views/_slide/#{@data['layout']}.html.erb")).result(binding)
     end
 
     private
 
-    def get_content
-      File.read(@path)
+    def default_data
+      @data = {
+        'layout' => 'regular'
+      }.merge(@data)
+    end
+
+    def read_yaml(path)
+      begin
+        @content = File.read(path)
+        if @content =~ /\A(---\s*\n.*?\n?)^(---\s*$\n?)/m
+          @data = YAML.load(@content)
+          @content = @content.gsub(/---(.|\n)*---/, '')
+        end
+      rescue SyntaxError => e
+        puts "YAML Exception reading #{path}: #{e.message}"
+      rescue Exception => e
+        puts "Error reading file #{path}: #{e.message}"
+      end
+
+      @data ||= {}
+      default_data
     end
   end
 end
