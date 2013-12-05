@@ -1,5 +1,7 @@
 <section>
-  <h2><%= data['title'] %></h2>
+  <% if data['title'] %>
+    <h2><%= data['title'] %></h2>
+  <% end %>
   <pre>
     <code data-trim>
       <%= content %>

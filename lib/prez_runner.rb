@@ -122,7 +122,8 @@ module PrezRunner
 
     def default_data
       @data = {
-        'layout' => 'regular'
+        'layout' => 'regular',
+        'title'  => false
       }.merge(@data)
     end
 
