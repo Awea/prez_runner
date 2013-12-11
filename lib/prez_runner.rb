@@ -89,7 +89,7 @@ module PrezRunner
 
     def paths(dir_check = false)
       @dir.each do |entry|
-        unless ['.','..'].include?(entry)
+        unless entry.start_with?('.')
           path = get_path(entry)
           yield dir_check ? [path, is_dir?(path)] : path
         end
