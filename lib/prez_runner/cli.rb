@@ -16,9 +16,10 @@ module PrezRunner
         run PrezRunner::RootRackResponder.new(prez_path)
       end
 
-      Rack::Server.start(
-        app: app
-      )
+      Rack::Server.new(
+        app:  app,
+        Port: 8081
+      ).start
     end
   end
 end

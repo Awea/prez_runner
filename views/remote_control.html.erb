@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Remote control</title>
+  <link rel="stylesheet" href="/assets/components/reveal.js/css/reveal.min.css">
+  <link rel="stylesheet" href="/assets/components/reveal.js/css/theme/night.css" id="theme">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="/assets/remote_control/transmission.js"></script>
+</head>
+<body data-ip="<%= @local_ip %>">
+  <div id="log"></div>
+  <div class="reveal">
+    <aside class="controls" style="display: block;">
+      <div class="navigate-left enabled" data-command="left"></div>
+      <div class="navigate-right enabled" data-command="right"></div>
+      <div class="navigate-up enabled" data-command="up"></div>
+      <div class="navigate-down enabled" data-command="down"></div>
+    </aside>
+  </div>
+</body>
+</html>

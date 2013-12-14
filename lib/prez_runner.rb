@@ -1,6 +1,7 @@
 require 'rack'
 require 'erb'
 require 'yaml'
+require 'socket'
 
 module PrezRunner
   class RootRackResponder
@@ -10,13 +11,37 @@ module PrezRunner
 
     def call env
       path = @prez_path ? @prez_path : path_from_env(env)
-      [200, {"Content-Type" => "text/html"}, [HomeController.render(path)]] 
+      [200, {"Content-Type" => "text/html"}, [Router.map_controller(env['REQUEST_PATH'], path)]] 
     end
 
     private
 
     def path_from_env(env)
       env['REQUEST_PATH'][1..env['REQUEST_PATH'].length]
+    end
+  end
+
+  class Router
+    def self.map_controller(request_path, path)
+      if request_path.start_with?('/remote')
+        RemoteController.render
+      else
+        HomeController.render(path)
+      end
+    end
+  end
+
+  class RemoteController
+    def self.render
+      new.render
+    end
+
+    def initialize
+      @local_ip = Socket.ip_address_list.detect{|intf| intf.ipv4_private?}.ip_address
+    end      
+
+    def render
+      ERB.new(File.read('views/remote_control.html.erb')).result(binding)
     end
   end
 
@@ -27,6 +52,7 @@ module PrezRunner
 
     def initialize(path)
       @container = MainContainer.new(path)
+      @local_ip  = Socket.ip_address_list.detect{|intf| intf.ipv4_private?}.ip_address
     end      
 
     def render
