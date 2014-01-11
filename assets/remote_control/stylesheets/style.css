@@ -1,0 +1,137 @@
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #c0bfbb;
+}
+
+#log {
+  display: none;
+}
+
+/*********************************************
+ * NOTES
+ *********************************************/
+
+.note {
+  padding: 50px;
+  margin: 50px;
+  border: 6px solid #25310d;
+  background: #9ab445;
+  height: 450px;
+}
+
+.note p {
+  padding: 0;
+  margin: 0;
+  font-family: monospace;
+  font-size: 40px;
+}
+
+/*********************************************
+ * CONTROLS
+ *********************************************/
+
+.reveal .controls {
+  display: none;
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  z-index: 30;
+  left: 50%;
+  bottom: 100px;
+  margin-left: -330px;
+}
+
+.reveal .controls div {
+  position: absolute;
+  opacity: 0.05;
+  width: 200px;
+  height: 200px;
+
+  -moz-transform: scale(.9999);
+
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+      -ms-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+
+.reveal .controls div.center {
+  left: 200px;
+  top: 200px;
+  background: #0f1527; 
+}
+
+.reveal .controls div.enabled {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.reveal .controls div.enabled:active {
+  margin-top: 1px;
+}
+
+  .reveal .controls div.navigate-left {
+    top: 200px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+  }
+    .reveal .controls div.navigate-left.fragmented {
+      opacity: 0.8;
+    }
+
+  .reveal .controls div.navigate-right {
+    right: 0;
+    top: 200px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+    .reveal .controls div.navigate-right.fragmented {
+      opacity: 0.8;
+    }
+
+  .reveal .controls div.navigate-up {
+    left: 200px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+    .reveal .controls div.navigate-up.fragmented {
+      opacity: 0.8;
+    }
+
+  .reveal .controls div.navigate-down {
+    left: 200px;
+    bottom: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+    .reveal .controls div.navigate-down.fragmented {
+      opacity: 0.8;
+    }
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled,
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled,
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled,
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  background: #0f1527; 
+}
+
+.reveal .controls div.navigate-left.enabled:hover,
+.reveal .controls div.navigate-right.enabled:hover,
+.reveal .controls div.navigate-up.enabled:hover,
+.reveal .controls div.navigate-down.enabled:hover {
+  background: #424055; 
+}

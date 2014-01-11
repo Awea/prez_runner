@@ -2,17 +2,29 @@
 <html lang="en">
 <head>
   <title>Remote control</title>
-  <link rel="stylesheet" href="/assets/components/reveal.js/css/reveal.min.css">
-  <link rel="stylesheet" href="/assets/components/reveal.js/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="/assets/remote_control/stylesheets/style.css" id="theme">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script src="/assets/remote_control/transmission.js"></script>
 </head>
 <body data-ip="<%= @local_ip %>">
   <div id="log"></div>
+  <div class="note">
+    <p>
+      <b>posts</b> tout ce qui est contenu dans le répertoire _posts <br>
+      <b>pages</b> tout les fichiers qui ont une entête yaml <br>
+      <b>statiques</b> les assets, le reste
+    </p>
+    <p>
+      <b>posts</b> tout ce qui est contenu dans le répertoire _posts <br>
+      <b>pages</b> tout les fichiers qui ont une entête yaml <br>
+      <b>statiques</b> les assets, le reste
+    </p>
+  </div>
   <div class="reveal">
     <aside class="controls" style="display: block;">
       <div class="navigate-left enabled" data-command="left"></div>
       <div class="navigate-right enabled" data-command="right"></div>
+      <div class="center enabled"></div>
       <div class="navigate-up enabled" data-command="up"></div>
       <div class="navigate-down enabled" data-command="down"></div>
     </aside>
