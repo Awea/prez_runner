@@ -1,33 +1,70 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta content="width=340" name="viewport" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="HandheldFriendly" content="true" />
+
   <title>Remote control</title>
-  <link rel="stylesheet" href="/assets/remote_control/stylesheets/style.css" id="theme">
+  <link rel="stylesheet" href="/assets/remote_control/stylesheets/reset.css">
+  <link rel="stylesheet" href="/assets/remote_control/stylesheets/cssboy.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script src="/assets/remote_control/transmission.js"></script>
 </head>
+
 <body data-ip="<%= @local_ip %>">
-  <div id="log"></div>
-  <div class="note">
-    <p>
-      <b>posts</b> tout ce qui est contenu dans le répertoire _posts <br>
-      <b>pages</b> tout les fichiers qui ont une entête yaml <br>
-      <b>statiques</b> les assets, le reste
-    </p>
-    <p>
-      <b>posts</b> tout ce qui est contenu dans le répertoire _posts <br>
-      <b>pages</b> tout les fichiers qui ont une entête yaml <br>
-      <b>statiques</b> les assets, le reste
-    </p>
-  </div>
-  <div class="reveal">
-    <aside class="controls" style="display: block;">
-      <div class="navigate-left enabled" data-command="left"></div>
-      <div class="navigate-right enabled" data-command="right"></div>
-      <div class="center enabled"></div>
-      <div class="navigate-up enabled" data-command="up"></div>
-      <div class="navigate-down enabled" data-command="down"></div>
-    </aside>
+  <div id="gameboy">
+
+    <div id="gameboy-bottom">
+
+      <div id="game">
+        <canvas style="width:340px; height: 306px;"></canvas>
+      </div>
+
+      <div>
+        <div id="gameboy-paddle">
+          <div id="btn-up" class="btn" data-command="up">
+            <div></div><div></div><div></div>
+          </div>
+          <div id="btn-left" class="btn" data-command="left">
+            <div></div><div></div><div></div>
+          </div>
+          <div><div></div></div>
+          <div id="btn-right" class="btn" data-command="right">
+            <div></div><div></div><div></div>
+          </div>
+          <div class="cl"></div>
+          <div id="btn-down" class="btn" data-command="down">
+            <div></div><div></div><div></div>
+          </div>
+        </div>
+
+        <div id="gameboy-buttons">
+          <div id="gameboy-buttons-inset">
+            <div id="btn-b" class="btn" data-command="B"></div>
+            <div id="btn-a" class="btn" data-command="A"></div>
+            <div class="cl"></div>
+          </div>
+          <span>B</span><span>A</span>
+        </div>
+      </div>
+      <div class="cl"></div>
+
+      <div id="gameboy-startpause">
+        <div id="btn-select" class="btn">
+          <div></div>
+          SELECT
+        </div>
+        <div id="btn-start" class="btn">
+          <div></div>
+          START
+        </div>
+        <div class="cl"></div>
+      </div>
+
+    </div>
+
   </div>
 </body>
 </html>

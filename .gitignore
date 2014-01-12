@@ -1,5 +1,6 @@
 NOTES.md
 .DS_Store
 .bundle
+.ruby-version
 prezs/*/
 !prezs/example
