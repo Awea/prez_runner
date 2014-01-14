@@ -1,0 +1,3 @@
+jekyll_prez: bin/prez_runner serve path_to_your_prez
+remote_control: bin/remote_control
+coffee_script: coffee --watch -o assets/ coffee

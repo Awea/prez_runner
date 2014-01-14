@@ -1,6 +1,9 @@
 NOTES.md
+Procfile
 .DS_Store
 .bundle
 .ruby-version
 prezs/*/
 !prezs/example
+assets/remote_control/*
+!assets/remote_control/stylesheets
