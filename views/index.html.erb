@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="/assets/components/jquery/jquery.js"></script>
     <script src="/assets/components/reveal.js/lib/js/head.min.js"></script>
     <script src="/assets/components/reveal.js/js/reveal.min.js"></script>
 
@@ -67,12 +67,10 @@
           { src: '/assets/components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: '/assets/components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: '/assets/components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: '/assets/components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: '/assets/components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: '/assets/components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '/assets/remote_control/reception.js', async: true}
         ]
       });
-
     </script>
-    <script src="/assets/remote_control/reception.js"></script>
   </body>
 </html>

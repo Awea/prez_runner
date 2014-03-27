@@ -2,7 +2,9 @@
   "name": "prez_runner",
   "version": "0.0.0",
   "dependencies": {
-    "reveal.js": "~2.6.1"
+    "reveal.js": "~2.6.1",
+    "jquery": "2.0.3",
+    "requirejs": "2.1.9"
   },
   "ignore": [
     "**/.*",

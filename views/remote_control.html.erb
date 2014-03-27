@@ -9,8 +9,6 @@
   <title>Remote control</title>
   <link rel="stylesheet" href="/assets/remote_control/stylesheets/reset.css">
   <link rel="stylesheet" href="/assets/remote_control/stylesheets/cssboy.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="/assets/remote_control/transmission.js"></script>
 </head>
 
 <body data-ip="<%= @local_ip %>">
@@ -19,7 +17,6 @@
     <div id="gameboy-bottom">
 
       <div id="game">
-        <canvas style="width:340px; height: 306px;"></canvas>
       </div>
 
       <div>
@@ -62,9 +59,9 @@
         </div>
         <div class="cl"></div>
       </div>
-
     </div>
-
   </div>
+
+  <script src="/assets/components/requirejs/require.js" data-main="/assets/remote_control/transmission"></script>
 </body>
 </html>
