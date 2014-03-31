@@ -17,8 +17,8 @@ module PrezRunner
       end
 
       Rack::Server.new(
-        app:  app,
-        Port: 8081
+        :app => app,
+        :Port => 8081
       ).start
     end
   end
