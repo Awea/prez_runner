@@ -1,6 +1,8 @@
 require 'rack'
 require 'erb'
 require 'yaml'
+require 'faye'
+require 'thin'
 
 module PrezRunner
   class RootRackResponder
@@ -8,7 +10,7 @@ module PrezRunner
       @prez_path = prez_path
     end
 
-    def call env
+    def call(env)
       path = @prez_path ? @prez_path : path_from_env(env)
       [200, {"Content-Type" => "text/html"}, [HomeController.render(path)]] 
     end
@@ -27,6 +29,7 @@ module PrezRunner
 
     def initialize(path)
       @container = MainContainer.new(path)
+      @ip = Tool.ip
     end      
 
     def render

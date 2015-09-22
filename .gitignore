@@ -3,3 +3,4 @@ NOTES.md
 .bundle
 prezs/*/
 !prezs/example
+assets/reception.js

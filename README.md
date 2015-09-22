@@ -3,11 +3,17 @@
 * Duplicate `prezs/example`
 * Read the comments
 
+## Requirements
+
+* Ruby 2.2.3
+* Nodejs
+  * Coffee-script
+
 ## Run the server
 
 ```shell
 bundle
-bin/prez_runner
+invoker invoker.ini
 ```
 
 ## Display your prez
